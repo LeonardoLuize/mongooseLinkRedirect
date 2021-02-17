@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link | Edit</title>
+</head>
+<body>
+    <style>
+        *{
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 200px;
+        }
+
+        body{
+            background-color: #2A2B2A;
+        }
+
+        h1{
+            color: #C6DDF0;
+        }
+
+        input{
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            font-size: 20px;
+        }
+
+        button{
+            border: solid 2px #C6DDF0;
+            border-radius: 20px;
+            padding: 10px 15px 10px 15px;
+            color: #C6DDF0;
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: bold;
+            transition-property: background-color, color;
+            transition-duration: .3s;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #C6DDF0;
+            color: #5E4955;
+
+        }
+
+        form{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            background-color: #5E4955;
+            padding: 30px 15px 20px 15px;
+            border-radius: 20px;
+        }
+    </style>
+    <div id="container">
+        <h1>Editar Link</h1>
+
+
+        <form action="/edit/<%=body._conditions._id%>" method="POST">
+            <input name="title" placeholder="Title" type="text" required class="fields" value="<%=body.title%>">
+            <input name="description" placeholder="Description" type="text" class="fields" value="<%=body.description%>">
+            <input name="url" placeholder="Url" type="text" required class="fields" value="<%=body.url%>">
+            <button>Salvar</button>
+        </form>
+        <% if(error) { %>
+            <h3><%= error.message %></h3>
+        <%}%>
+    </div>
+
+</body>
+</html>
